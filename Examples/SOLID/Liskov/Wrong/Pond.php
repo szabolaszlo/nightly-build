@@ -19,7 +19,9 @@ class Pond
     public function makeDuckQuack()
     {
         foreach ($this->ducks as $duck) {
-            $duck->quack();
+            if (!$duck instanceof RubberDuck) {
+                $duck->quack();
+            }
         }
     }
 }

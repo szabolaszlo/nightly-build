@@ -1,6 +1,18 @@
 <?php
+interface UserInterface
+{
+    public function getName(): string;
 
-class User
+    public function getEmail(): string;
+
+    public function getPhone(): string;
+
+    public function getAddress(): string;
+
+    public function getAge(): string;
+}
+
+class User implements UserInterface
 {
     protected string $name;
     protected string $email;
@@ -63,7 +75,7 @@ class EmailService
 {
     protected $sender;
 
-    public function sendEmail(User $user, $message)
+    public function sendEmail(UserInterface $user, $message)
     {
         // send email, need $user->getEmail(), $user->getName()
     }
@@ -71,7 +83,7 @@ class EmailService
 
 class PhoneService
 {
-    public function call(User $user)
+    public function call(UserInterface $user)
     {
         // phone call, need $user->getPhoneNumber(), $user->getName()
     }
